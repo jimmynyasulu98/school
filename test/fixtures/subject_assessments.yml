@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  staff_subject: one
+  assessment_type: one
+  submitted: one
+  approved: one
+
+two:
+  staff_subject: two
+  assessment_type: two
+  submitted: two
+  approved: two

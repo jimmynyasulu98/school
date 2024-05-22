@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  assessment_type: one
+  student: one
+  total_marks: 9.99
+  best_subjects_total: 9.99
+  final_remark: false
+  final_letter_grade: MyString
+
+two:
+  assessment_type: two
+  student: two
+  total_marks: 9.99
+  best_subjects_total: 9.99
+  final_remark: false
+  final_letter_grade: MyString
