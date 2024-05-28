@@ -32,16 +32,17 @@ class DeviseCreateStaffs < ActiveRecord::Migration[7.1]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.string :title
+      t.integer :title
       t.string :username
       t.string :first_name
       t.string :surname, null: false
-      t.string :gender
-      t.string :marital_status
+      t.integer :gender
+      t.integer :marital_status
       t.date :date_of_birth
       t.date :date_of_appointment
       t.string :phone_number
-      t.boolean :is_admin
+      t.boolean :is_admin, default: false
+      t.boolean :is_active, default: true
       t.timestamps null: false
     end
 

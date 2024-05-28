@@ -1,33 +1,54 @@
-# frozen_string_literal: true
 
-class Staffs::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
-
+class Staffs::RegistrationsController < ApplicationController
+  before_action :set_staff, only: %i[ show edit update destroy ]
+  def index
+  end
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @staff = Staff.new
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
-
+  def create
+    @staff = Staff.new(staff_params)
+    #@pass = DefaultPassword.find_by(user: "staff")
+    #@staff.encrypted_password = @pass.password_digest
+    @staff.password = "12345678"
+    
+    respond_to do |format|
+      if @staff.save
+        format.html { redirect_to staff_url(@staff), notice: "Staff member successfully created." }
+        format.json { render :show, status: :created, location: @staff }
+      else
+        puts @staff.errors.objects.first.full_message 
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @staff.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  def show 
+  end
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    respond_to do |format|
+      if @staff.update(staff_params)
+        format.html { redirect_to staff_url(@staff), notice: "staff was successfully updated." }
+        format.json { render :show, status: :ok, location: @staff }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @staff.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -59,4 +80,14 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+    def staff_params
+    # strong parameters
+    params.require(:staff).permit(:title, :username, :email, :first_name, :surname, :gender, :date_of_birth, :date_of_appointment,:phone_number, :marital_status)
+    end
+
+    def set_staff
+      @staff= Staff.find(params[:id])
+    end
+
 end

@@ -94,16 +94,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_081628) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "title"
+    t.integer "title"
     t.string "username"
     t.string "first_name"
-    t.string "surname"
-    t.string "gender"
-    t.string "marital_status"
+    t.string "surname", null: false
+    t.integer "gender"
+    t.integer "marital_status"
     t.date "date_of_birth"
     t.date "date_of_appointment"
     t.string "phone_number"
-    t.boolean "is_admin"
+    t.boolean "is_admin", default: false
+    t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_staffs_on_email", unique: true
@@ -142,17 +143,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_081628) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "title"
+    t.integer "title"
     t.string "username"
     t.string "first_name"
     t.string "surname"
-    t.string "gender"
+    t.integer "gender"
     t.date "date_of_birth"
     t.string "date_of_enrollment"
     t.string "phone_number"
     t.string "district"
     t.string "t_a"
     t.string "village"
+    t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_students_on_email", unique: true

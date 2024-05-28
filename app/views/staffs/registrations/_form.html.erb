@@ -1,0 +1,49 @@
+<%= form_with(model: staff) do |form| %>
+ <div  class="field">
+    <%= form.label :query, "Username:" %>
+    <%= form.text_field :username , :required => true %>
+</div>
+<div  class="field">
+    <%= form.label :query, "Title:" %>
+  
+    <%= form.select :title , Staff.titles.keys , { prompt: 'Select tile' } %>
+</div>
+<div class="field">
+    <%= form.label :email %><br />
+    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+</div>
+<div class=" col-sm-6 ">
+    <%= form.label :query, "First Name:" %>
+    <%= form.text_field :first_name , :required => true %>
+</div>
+<div class=" col-sm-6  ">
+    <%= form.label :query, "Last Name:" %>
+    <%= form.text_field :surname , :required => true %>
+</div>
+<div class=" col-sm-6">
+    <%= form.label :query, "Date of Birth:" %>
+    <%= form.date_field :date_of_birth %>
+</div>
+<div class="col-sm-6">
+    <%= form.label :query, "Marital status:" %>
+    <%= form.select :marital_status , Staff.marital_statuses.keys , { prompt: 'Select Marital Status' } %>
+</div>
+<div class="col-sm-6">
+    <%= form.label :query, "Gender:" %>
+     <%= form.select :gender , Staff.genders.keys , { prompt: 'Select Gender' } %>
+</div>
+<div class=" col-sm-6">
+    <%= form.label :query, "Phone number:" %>
+    <%= form.text_field :phone_number %>
+</div>
+
+
+<div class="col-sm-6">
+    <%= form.label :query, "Date of Appointment:", class: "" %>
+    <%= form.date_field :date_of_appointment%>
+</div>
+
+<div class="actions">
+    <%= form.submit %>
+</div>
+<% end %>

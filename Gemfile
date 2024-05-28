@@ -68,4 +68,9 @@ end
 
 # Custom gems 
 
+
 gem 'devise', '~> 4.9', '>= 4.9.4'
+# a Sass engine for bootstrap support
+gem 'dartsass-sprockets'
+gem 'jquery-rails'
+gem 'bootstrap', '~> 5.3.3'
