@@ -18,13 +18,9 @@
 
   <div>
     <%= form.label :academic_year_id, style: "display: block" %>
-    <%= form.text_field :academic_year_id %>
+    <%= form.collection_select :academic_year_id, AcademicYear.all, :id, :name %>
   </div>
 
-  <div>
-    <%= form.label :registration_open, style: "display: block" %>
-    <%= form.check_box :registration_open %>
-  </div>
 
   <div>
     <%= form.label :start_date, style: "display: block" %>

@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
+  
+ 
+ 
   root to: "home#index"
+  # routes related to classes and corresponding subjects
   resources :forms
+  resources :form do
+    resources :subjects, only: [:index, :new,:create, :show, :destroy], controller: "form_subjects"
+  end
+  #--- end ---#
+  resources :subjects
   resources :terms
   resources :academic_years
-  resources :subjects
+
   resources :staff_subjects
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

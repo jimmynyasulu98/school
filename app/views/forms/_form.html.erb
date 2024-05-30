@@ -1,7 +1,11 @@
-<div id="<%= dom_id form %>">
-  <p>
-    <strong>Name:</strong>
-    <%= form.name %>
-  </p>
 
+
+<%= form_with(model: form) do |form| %>
+ <div  class="field">
+    <%= form.label :query, "Name:" %>
+    <%= form.text_field :name , :required => true %>
 </div>
+<div class="actions">
+    <%= form.submit %>
+</div>
+<% end %>

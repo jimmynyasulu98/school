@@ -1,14 +1,30 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Subjects</h1>
-
-<div id="subjects">
-  <% @subjects.each do |subject| %>
-    <%= render subject %>
-    <p>
-      <%= link_to "Show this subject", subject %>
-    </p>
-  <% end %>
+<div class="d-flex px-3">
+  <%= link_to "New subject", new_subject_path %> |
+  <%= link_to "Add Subject to Class", forms_path %>|
+  <%= link_to "Assign subject to staff", new_subject_path %>|
+  <%= link_to "Assign subject to student", new_subject_path %>
 </div>
+<div id="subjects">
+   
 
-<%= link_to "New subject", new_subject_path %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+         <% @subjects.each do |subject| %>
+            <%= render subject %>          
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+
+

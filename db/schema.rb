@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_22_081628) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_29_101625) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_081628) do
     t.datetime "updated_at", null: false
     t.index ["staff_id"], name: "index_assessment_types_on_staff_id"
     t.index ["term_id"], name: "index_assessment_types_on_term_id"
+  end
+
+  create_table "form_subjects", force: :cascade do |t|
+    t.bigint "form_id", null: false
+    t.bigint "subject_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["form_id"], name: "index_form_subjects_on_form_id"
+    t.index ["subject_id"], name: "index_form_subjects_on_subject_id"
   end
 
   create_table "forms", force: :cascade do |t|
@@ -104,7 +113,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_081628) do
     t.date "date_of_appointment"
     t.string "phone_number"
     t.boolean "is_admin", default: false
-    t.boolean "is_active", default: true
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_staffs_on_email", unique: true
@@ -183,7 +192,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_081628) do
   create_table "terms", force: :cascade do |t|
     t.string "name"
     t.bigint "academic_year_id", null: false
-    t.boolean "registration_open", default: false
+    t.boolean "registration_open", default: true
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", null: false
@@ -193,6 +202,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_081628) do
 
   add_foreign_key "assessment_types", "staffs"
   add_foreign_key "assessment_types", "terms"
+  add_foreign_key "form_subjects", "forms"
+  add_foreign_key "form_subjects", "subjects"
   add_foreign_key "registrations", "forms"
   add_foreign_key "registrations", "students"
   add_foreign_key "registrations", "terms"

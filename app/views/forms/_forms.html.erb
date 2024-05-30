@@ -1,0 +1,21 @@
+
+<div id="<%= dom_id form %>"> 
+    <strong>Name:</strong>
+    <%= form.name %>
+
+     <button type="button" class="btn btn-primary"  data-bs-toggle="modal"
+                            data-bs-target="#addSubjectToClassModal<%=form.id%>">
+                                    Add Subjects
+    </button>
+    <%= render "modals", form: form %>
+
+    <div class="">
+        <% unless form.form_subjects.count > 0 %>
+             <%= "No subject was added to class" %>
+        <% end %>
+        <% form.form_subjects.each do |subject| %>
+            <%= subject.subject.name %>
+         <% end %>
+    </div>
+
+</div>

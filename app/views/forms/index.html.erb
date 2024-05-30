@@ -4,7 +4,7 @@
 
 <div id="forms">
   <% @forms.each do |form| %>
-    <%= render form %>
+    <%= render partial: "forms", locals: { form: form } %>
     <p>
       <%= link_to "Show this form", form %>
     </p>

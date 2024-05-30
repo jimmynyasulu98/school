@@ -1,0 +1,30 @@
+<div class="modal fade" id="addSubjectToClassModal<%=form.id%>" tabindex="-1" aria-labelledby="addSubjectModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Subject</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <%= form_with  url: form_subjects_path(form) do |form| %>
+          <div class="modal-body">
+           
+              <div class = "Container">
+                <% Subject.all.each do |subject| %>
+                  <!-- <%= form.check_box :"#{subject.id}" %> -->
+                  <%= form.label :"#{subject.id}" , subject.name %>
+                  <%= check_box_tag 'subjects[]', subject.id %>
+                <% end %>
+              </div>
+           
+          </div>
+
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+            <%= form.submit "Add Subject", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

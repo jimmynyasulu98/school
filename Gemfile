@@ -74,3 +74,5 @@ gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'dartsass-sprockets'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 5.3.3'
+# font awesome icon support
+gem "font-awesome-rails"

@@ -42,7 +42,7 @@ class DeviseCreateStaffs < ActiveRecord::Migration[7.1]
       t.date :date_of_appointment
       t.string :phone_number
       t.boolean :is_admin, default: false
-      t.boolean :is_active, default: true
+      t.boolean :is_active, default: true, null: false
       t.timestamps null: false
     end
 
