@@ -2,6 +2,7 @@
 class Staffs::RegistrationsController < ApplicationController
   before_action :set_staff, only: %i[ show edit update destroy ]
   def index
+    @staffs = Staff.all
   end
   # GET /resource/sign_up
   def new
@@ -27,6 +28,7 @@ class Staffs::RegistrationsController < ApplicationController
     end
   end
   def show 
+    @forms = Form.all
   end
   # GET /resource/edit
   def edit

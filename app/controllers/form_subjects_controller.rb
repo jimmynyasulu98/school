@@ -1,36 +1,25 @@
 class FormSubjectsController < ApplicationController
-  def index
-  end
-
-  def new
-  end
 
   def create
 
-    params[:subjects].each do |subject_id|
-
-      return redirect_to_or root_path ,notice: "Subject does not exist" unless Subject.exists?(subject_id) 
-      FormSubject.create(form_id: params[:form_id], subject_id: subject_id)
-    end
-    
+    return unless params.has_key?(:subjects) 
+    form = FormSubject.create_form_subject(params[:form_id], params[:subjects])
     respond_to do |format|
-      if @form.save
-        format.html { redirect_to forms_url, notice: "Form was successfully created." }
-        format.json { render :show, status: :created, location: @form }
+      if form[0]
+        format.html { redirect_to forms_url, notice: "Subject(s) successfully added to class" }
+        format.json { render :show, status: :created }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to forms_url, notice: "Action Failed" }
         format.json { render json: @form.errors, status: :unprocessable_entity }
       end
     end
-
-  end
-
-  def edit
-  end
-
-  def update
+   
   end
 
   def destroy
+    form_subject = FormSubject.find(params[:id])
+    form_subject.destroy
+    redirect_back_or_to root_path,  notice: "Action completed successifully"
   end
+
 end

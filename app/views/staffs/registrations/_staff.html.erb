@@ -1,0 +1,14 @@
+<tr>
+    <td><%= index + 1 %></td>
+    <td><%= staff.username %></td>
+    <td><%= staff.first_name %></td>
+    <td><%= staff.surname %></td>
+    
+ 
+    <td>
+        <%= link_to edit_staff_path(staff), class:"btn btn-link" do %>
+            <i class="fa fa-edit fa-1x text-primary"></i>
+        <% end %>
+        <%= link_to "Assign subject" ,staff, class:"btn btn-primary p-0" %>
+    </td>
+</tr>

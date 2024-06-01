@@ -12,4 +12,7 @@ class Student < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :registrations
+  has_many :student_subjects
+  has_many :subjects, through: :student_subjects
 end

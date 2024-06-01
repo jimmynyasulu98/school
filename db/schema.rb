@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_29_101625) do
     t.bigint "subject_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["form_id", "subject_id"], name: "index_form_subjects_on_form_id_and_subject_id", unique: true
     t.index ["form_id"], name: "index_form_subjects_on_form_id"
     t.index ["subject_id"], name: "index_form_subjects_on_subject_id"
   end
@@ -116,7 +117,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_29_101625) do
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_staffs_on_email", unique: true
+    t.index ["email", "username"], name: "index_staffs_on_email_and_username", unique: true
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
   end
 

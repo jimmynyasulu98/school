@@ -1,0 +1,37 @@
+<%= link_to "edit student", edit_student_path(@student) %>
+
+<%= @student.username %>
+<%= @student.first_name %>
+<%= @student.surname %>
+
+<div id="Subjects">
+    <% form_class = @student.registrations.last %>
+
+    <!-- subjects already assign to student for current term -->
+
+    <% @student.student_subjects.each do |subject| %>
+
+      <%= "Subjects registred  "%>
+      <%= subject.subject.name %>
+        <%= button_to student_subject_path(subject), method: :delete, class:"btn btn-link" do %>
+                <i class="fa fa-trash nav-icon fa-1x text-danger"></i>
+        <% end %>
+
+    <% end %>
+
+    <%= form_with  url: student_subjects_path(@student) do |form| %>
+            
+        <%= hidden_field_tag :student, @student  %>
+        <%= "Subjects available for class "+ form_class.form.name %>
+        <div class = "Container">
+            <% FormSubject.where(form_id: form_class.form_id ).each do |subject| %>
+                <%= form.label :"#{subject.subject.id}" , subject.subject.name %>
+                <%= check_box_tag 'subjects[]', subject.subject.id %>
+            <% end %>
+        </div>
+
+            <%= form.submit "Register subject for student", class: "btn btn-primary p-0"%>
+    <% end %>
+
+
+</div>

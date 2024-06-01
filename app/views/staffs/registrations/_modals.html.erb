@@ -5,22 +5,24 @@
         <h5 class="modal-title" id="exampleModalLabel">Add Subject</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-        <%= form_with  url: form_subjects_path(form) do |form| %>
+        <%= form_with  url: staff_subjects_path do |f| %>
           <div class="modal-body">
-           
-              <div class = "Container">
-                <% Subject.all.each do |subject| %>
-                  <!-- <%= form.check_box :"#{subject.id}" %> -->
-                  <%= form.label :"#{subject.id}" , subject.name %>
-                  <%= check_box_tag 'subjects[]', subject.id %>
-                <% end %>
-              </div>
+            
+            <%= hidden_field_tag :staff, form.id  %>
+            <%= hidden_field_tag :form, form.id  %>
+
+            <div class = "Container">
+            <%  form.form_subjects.each do |subject| %>
+                <%= f.label :"#{subject.subject.id}" , subject.subject.name %>
+                <%= check_box_tag 'subjects[]', subject.subject.id %>
+            <% end %>
+            </div>
            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-            <%= form.submit "Add Subject", class: "btn btn-primary" %>
+            <%= f.submit "Add Subject", class: "btn btn-primary"%>
           </div>
         <% end %>
     </div>

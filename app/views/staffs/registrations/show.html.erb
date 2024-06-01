@@ -1,1 +1,37 @@
-<%= link_to "staff", edit_staff_path(@staff) %>
+<%= link_to "edit staff", edit_staff_path(@staff) %>
+
+<%= @staff.username %>
+<%= @staff.first_name %>
+<%= @staff.surname %>
+
+<h1>Forms</h1>
+
+<div id="forms">
+  <% @forms.each do |form| %>
+    <%= "Form "+ form.name %>
+    <!-- subjects already assign to staff member for this class -->
+    <% @staff.staff_subjects.where(form_id: form).each do |subject| %>
+      
+      <%= subject.subject.name%>
+        <%= button_to staff_subject_path(subject), method: :delete, class:"btn btn-link" do %>
+                <i class="fa fa-trash nav-icon fa-1x text-danger"></i>
+        <% end %>
+
+    <% end %>
+    <!--button to modal for subject assignment  -->
+    <button type="button" class="btn btn-primary"  data-bs-toggle="modal"
+                            data-bs-target="#addSubjectToClassModal<%=form.id%>">
+                            Assign subjects
+    </button>
+    <%= render "modals", form: form %>
+
+    <p>
+      <%= link_to "Show this form", form %>
+    </p>
+  <% end %>
+</div>
+
+
+   
+
+

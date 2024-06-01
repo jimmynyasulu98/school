@@ -15,6 +15,10 @@
         <% end %>
         <% form.form_subjects.each do |subject| %>
             <%= subject.subject.name %>
+            
+            <%= button_to form_subject_path(form,subject), method: :delete, class:"btn btn-link" do %>
+                <i class="fa fa-trash nav-icon fa-1x text-danger"></i>
+            <% end %>
          <% end %>
     </div>
 

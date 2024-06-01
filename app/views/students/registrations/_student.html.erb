@@ -1,0 +1,14 @@
+<tr>
+    <td><%= index + 1 %></td>
+    <td><%= student.username %></td>
+    <td><%= student.first_name %></td>
+    <td><%= student.surname %></td>
+    
+ 
+    <td>
+        <%= link_to edit_student_path(student), class:"btn btn-link" do %>
+            <i class="fa fa-edit fa-1x text-primary"></i>
+        <% end %>
+        <%= link_to "Assign subject" ,student, class:"btn btn-primary p-0" %>
+    </td>
+</tr>

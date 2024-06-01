@@ -1,0 +1,63 @@
+<%= form_with(model: student) do |form| %>
+ <div  class="field">
+    <%= form.label :query, "Username:" %>
+    <%= form.text_field :username , :required => true %>
+</div>
+<div  class="field">
+    <%= form.label :query, "Title:" %>
+  
+    <%= form.select :title , Student.titles.keys , { prompt: 'Select tile' } %>
+</div>
+<div class="field">
+    <%= form.label :email %><br />
+    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+</div>
+<div class=" col-sm-6 ">
+    <%= form.label :query, "First Name:" %>
+    <%= form.text_field :first_name , :required => true %>
+</div>
+<div class=" col-sm-6  ">
+    <%= form.label :query, "Last Name:" %>
+    <%= form.text_field :surname , :required => true %>
+</div>
+<div class=" col-sm-6">
+    <%= form.label :query, "Date of Birth:" %>
+    <%= form.date_field :date_of_birth %>
+</div>
+
+<div class="col-sm-6">
+    <%= form.label :query, "Gender:" %>
+     <%= form.select :gender , Student.genders.keys , { prompt: 'Select Gender' } %>
+</div>
+<div class=" col-sm-6">
+    <%= form.label :query, "Phone number:" %>
+    <%= form.text_field :phone_number %>
+</div>
+<div class=" col-sm-6">
+    <%= form.label :query, "District:" %>
+    <%= form.text_field :district %>
+</div>
+<div class=" col-sm-6">
+    <%= form.label :query, "Village:" %>
+    <%= form.text_field :phone_number %>
+</div>
+<div class=" col-sm-6">
+    <%= form.label :query, "T/A:" %>
+    <%= form.text_field :t_a %>
+</div>
+
+
+<div class="col-sm-6">
+    <%= form.label :query, "Date of Enrollment:", class: "" %>
+    <%= form.date_field :date_of_enrollment %>
+</div>
+
+<div class= "col-sm-6" >
+    <%= label_tag :location , 'Form/Class:' %>
+    <%= select_tag :form, options_for_select((Form.all).to_a.map{ |val| [val.name,val.id] }) %>
+</div>
+
+<div class="actions">
+    <%= form.submit %>
+</div>
+<% end %>

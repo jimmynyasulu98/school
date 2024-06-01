@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+<div class="d-flex px-3">
+  <%= link_to "New staff", new_staff_path %> |
+  
+</div>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">User Name</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col" colspan="2" class="justify-content-center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @staffs.each.with_index do |staff, index| %>
+          <%= render 'staff', staff: staff, index: index %>          
+        <% end %>
+    </tbody>
+  </table>
+</div>
