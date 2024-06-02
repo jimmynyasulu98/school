@@ -67,6 +67,11 @@ class Students::RegistrationsController < ApplicationController
     end
 
     def set_student
-      @student= Student.find(params[:id])
+      
+      begin
+        @student= Student.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_back_or_to root_path
+      end
     end
 end

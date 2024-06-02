@@ -5,6 +5,8 @@ class StaffSubject < ApplicationRecord
   belongs_to :form
 
   validates_uniqueness_of :staff_id, scope: [:subject_id,:form_id ]
+  has_many :subject_assessments
+  
 
   private
     def self.create_staff_subject(params)

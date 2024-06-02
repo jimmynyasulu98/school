@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+<h1>Subjects</h1>
+
+<div id="subject_assessments">
+  <% @staff_subjects.each do |staff_subject| %>
+    <%=  "Assessments for #{staff_subject.subject.name}"%> 
+    
+     <button type="button" class="btn btn-primary p-0"  data-bs-toggle="modal"
+        data-bs-target="#newAssessmentModal<%=staff_subject.subject.id%>">
+            New assessment
+    </button>
+    <br>
+    <%= render "new_assessment" , staff_subject: staff_subject %>
+    <%= render "subject_assessment" , subject_assessments: staff_subject.subject_assessments %>
+    
+  <% end %>
+</div>
+
+<%= link_to "New form", new_form_path %>

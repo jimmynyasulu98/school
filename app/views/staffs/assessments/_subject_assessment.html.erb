@@ -1,0 +1,4 @@
+ 
+ <% subject_assessments.each do |assessment| %>
+    <%= assessment.assessment_type.name %> <%= link_to "Assessment details", assessment_path(assessment) %><br>
+ <% end %>

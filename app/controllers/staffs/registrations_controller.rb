@@ -89,7 +89,11 @@ class Staffs::RegistrationsController < ApplicationController
     end
 
     def set_staff
-      @staff= Staff.find(params[:id])
+      begin
+        @student= Staff.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_back_or_to root_path
+      end
     end
 
 end

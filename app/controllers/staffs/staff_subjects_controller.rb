@@ -17,9 +17,13 @@ class Staffs::StaffSubjectsController < ApplicationController
     end
 
     def destroy
-        staff_subject = StaffSubject.find(params[:id])
-        staff_subject.destroy
-        redirect_back_or_to root_path,  notice: "Action completed successifully"
+        begin
+            staff_subject = StudentSubject.find(params[:id])
+            staff_subject.destroy
+            redirect_back_or_to root_path,  notice: "Action completed successifully"
+        rescue ActiveRecord::RecordNotFound
+
+        end
     end
 
 end

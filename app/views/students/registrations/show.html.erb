@@ -8,10 +8,10 @@
     <% form_class = @student.registrations.last %>
 
     <!-- subjects already assign to student for current term -->
-
+    <%= "Subjects registred  "%>
     <% @student.student_subjects.each do |subject| %>
 
-      <%= "Subjects registred  "%>
+    
       <%= subject.subject.name %>
         <%= button_to student_subject_path(subject), method: :delete, class:"btn btn-link" do %>
                 <i class="fa fa-trash nav-icon fa-1x text-danger"></i>
@@ -19,9 +19,8 @@
 
     <% end %>
 
-    <%= form_with  url: student_subjects_path(@student) do |form| %>
+    <%= form_with  url: student_subjects_path(student: @student, form: form_class.id  ) do |form| %>
             
-        <%= hidden_field_tag :student, @student  %>
         <%= "Subjects available for class "+ form_class.form.name %>
         <div class = "Container">
             <% FormSubject.where(form_id: form_class.form_id ).each do |subject| %>

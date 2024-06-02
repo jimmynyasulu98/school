@@ -1,0 +1,23 @@
+<div class="modal fade" id="newAssessmentModal<%=staff_subject.subject.id%>" tabindex="-1" aria-labelledby="addSubjectModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><%= "New Assessment for  "%> <b><%=staff_subject.subject.name%> </b> </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <%= form_with  url: assessments_path(staff_subject:staff_subject.id) do |form| %>
+          <div class="modal-body">
+            <div class = "Container">
+                <%= form.label :name %><br />
+                <%= form.text_field :name  %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+            <%= form.submit "Add Subject", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
