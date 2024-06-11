@@ -1,4 +1,10 @@
- 
+ <!-- All staff assessments for as a subject -->
+
+
  <% subject_assessments.each do |assessment| %>
-    <%= assessment.assessment_type.name %> <%= link_to "Assessment details", assessment_path(assessment) %><br>
+    <%= assessment.assessment_type.name %> <%= link_to "Assessment details", assessment_path(assessment) %>
+
+    <%= button_to assessment_path(assessment.assessment_type.id), method: :delete, class:"btn btn-link" do %>
+                <i class="fa fa-trash nav-icon fa-1x text-danger"></i>
+    <% end %><br>
  <% end %>

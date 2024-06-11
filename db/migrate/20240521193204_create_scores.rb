@@ -4,7 +4,7 @@ class CreateScores < ActiveRecord::Migration[7.1]
       t.references :subject_assessment, null: false, foreign_key: true
       t.references :student, null: false, foreign_key: true
       t.decimal :score, null: true
-      t.references :assessment_grade, null: true, foreign_key: true
+      t.references :assessment_grade,foreign_key: true, null: true,  default: :null
 
       t.timestamps
     end

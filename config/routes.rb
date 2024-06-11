@@ -36,9 +36,12 @@ Rails.application.routes.draw do
   #get '/staffs', to: 'staffs/registrations#index' ,as: "staffs"
   resources :staffs ,controller:"staffs/registrations"
   resources :students ,controller:"students/registrations"
+  
+
   # Defines the root path route ("/")
   # root "posts#index"
   resources :assessments, controller: "staffs/assessments"
+  resources :scores,only: [:create, :update], controller: "staffs/scores"
 
 
 end

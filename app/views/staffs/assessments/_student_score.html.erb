@@ -1,0 +1,26 @@
+
+<div class="modal fade" id="addstudentScoreModal<%=student_score.id%>" tabindex="-1" aria-labelledby="addstudentAssessmentModal#{student_id}" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><%= "Add score for "+ student_score.student.username %></h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= form_with  url: student_score.score ? score_path(student_score.id) : 
+        scores_path(student_score: student_score.id)  do |form|%>
+
+      <div class="modal-body">
+
+          <%= form.label :query, "Total Marks:" %>
+          <%= form.number_field :score ,value: if student_score.score then student_score.score end ,class: "form-control form-control-sm", :required => true %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+           <%= form.submit  "Add" , class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

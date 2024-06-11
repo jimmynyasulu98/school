@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<!-- Student on a aprticular subject with corresponding scores -->
+<%= @subject_assessment.assessment_type.name + "details " %><br>
+
+<%  @subject_assessment.scores.each do |student_score| %>
+    <%= student_score.student.username %>
+    <%= student_score.score ? student_score.score : "0.00" %>
+    <!-- asssign a score to student through modal-->
+    <% unless student_score.score %>
+         <button type="button" class="btn btn-link"  data-bs-toggle="modal"
+             data-bs-target="#addstudentScoreModal<%=student_score.id%>">
+            <i class="fa fa-plus"></i>
+        </button>
+    <% else %>
+        <button type="button" class="btn btn-link"  data-bs-toggle="modal"
+        data-bs-target="#addstudentScoreModal<%=student_score.id %>">
+            <i class="fa fa-edit"></i>
+        </button>
+    <% end  %>
+
+    <%= render "student_score", student_score: student_score  %>
+<% end %>
+
