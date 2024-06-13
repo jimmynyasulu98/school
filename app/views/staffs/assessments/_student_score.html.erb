@@ -8,8 +8,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <%= form_with  url: student_score.score ? score_path(student_score.id) : 
-        scores_path(student_score: student_score.id)  do |form|%>
-
+        scores_path(id: student_score.id), method: if student_score.score then :put  end  do |form|%>
+ 
       <div class="modal-body">
 
           <%= form.label :query, "Total Marks:" %>
@@ -18,7 +18,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-           <%= form.submit  "Add" , class: "btn btn-primary" %>
+           <%= form.submit  "Add", class: "btn btn-primary" %>
         </div>
       <% end %>
     </div>

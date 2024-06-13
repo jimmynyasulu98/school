@@ -1,0 +1,11 @@
+<%= "Mandatory assessments for #{@term.name}" %>
+ <button type="button" class="btn btn-primary p-1"  data-bs-toggle="modal"
+             data-bs-target="#newMandatoryAssessmentModal">
+            New
+ </button>
+<br>
+<% @mandatory_assessments.each do |mandatory_assessment| %>
+    <%= mandatory_assessment.name %><br>
+<% end %>
+
+<%= render "new_mandatory_assessment"%>

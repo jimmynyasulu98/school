@@ -1,0 +1,2 @@
+module Staffs::MandatoryAssessmentsHelper
+end

@@ -1,5 +1,4 @@
- <!-- All staff assessments for as a subject -->
-
+ <!-- All staff assessments for a subject -->
 
  <% subject_assessments.each do |assessment| %>
     <%= assessment.assessment_type.name %> <%= link_to "Assessment details", assessment_path(assessment) %>

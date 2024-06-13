@@ -21,7 +21,7 @@ class Staffs::RegistrationsController < ApplicationController
         format.html { redirect_to staff_url(@staff), notice: "Staff member successfully created." }
         format.json { render :show, status: :created, location: @staff }
       else
-        puts @staff.errors.objects.first.full_message 
+      
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @staff.errors, status: :unprocessable_entity }
       end
@@ -90,7 +90,7 @@ class Staffs::RegistrationsController < ApplicationController
 
     def set_staff
       begin
-        @student= Staff.find(params[:id])
+        @staff = Staff.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         redirect_back_or_to root_path
       end

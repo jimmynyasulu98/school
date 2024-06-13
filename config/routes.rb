@@ -40,8 +40,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  resources :mandatory_assessments, controller: "staffs/mandatory_assessments"
   resources :assessments, controller: "staffs/assessments"
   resources :scores,only: [:create, :update], controller: "staffs/scores"
+  
 
 
 end

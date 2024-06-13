@@ -1,0 +1,33 @@
+
+<div class="modal fade" id="newMandatoryAssessmentModal" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><%= "New Mandatory Assessment" %></h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= form_with  url:  mandatory_assessments_path  do |form|%>
+ 
+        <div class="modal-body">
+
+          <%= form.label :query, "Name:" %>
+          <%= form.text_field :name,class: "form-control form-control-sm", :required => true %>
+          <div class = "container">
+            <p class="modal-title" id="exampleModalLabel"><%= "Select classes" %></p>
+              <%  Form.order(name: :asc).each do |form_class| %>
+                  <%= form.label :"#{form_class.id}" , " Form #{form_class.name}" %>
+                  <%= check_box_tag 'forms[]', form_class.id %><%=" | "%>
+              <% end %>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+           <%= form.submit  "Add", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

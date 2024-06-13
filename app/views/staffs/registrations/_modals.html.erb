@@ -12,10 +12,10 @@
             <%= hidden_field_tag :form, form.id  %>
 
             <div class = "Container">
-            <%  form.form_subjects.each do |subject| %>
-                <%= f.label :"#{subject.subject.id}" , subject.subject.name %>
-                <%= check_box_tag 'subjects[]', subject.subject.id %>
-            <% end %>
+              <%  form.form_subjects.each do |subject| %>
+                  <%= f.label :"#{subject.subject.id}" , subject.subject.name %>
+                  <%= check_box_tag 'subjects[]', subject.subject.id %>
+              <% end %>
             </div>
            
           </div>

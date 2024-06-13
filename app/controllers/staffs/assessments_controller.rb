@@ -1,3 +1,4 @@
+
 class Staffs::AssessmentsController < ApplicationController
 
     before_action :find_current_term, only: %i[ index create show edit update destroy ]
@@ -13,7 +14,7 @@ class Staffs::AssessmentsController < ApplicationController
 
     def create
         @assessment_type = AssessmentType.new(name: params[:name], staff_id: current_staff.id, term_id: @term.id)
-        @assessment_type.save
+     
         respond_to do |format|
             if  @assessment_type.save
                 @subject_assessment = @assessment_type.subject_assessments.build(staff_subject_id: params[:staff_subject])

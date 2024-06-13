@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
+ <%= link_to "Mandatory Assessments Managment", mandatory_assessments_path %>
 <h1>Subjects</h1>
-
 <div id="subject_assessments">
   <% @staff_subjects.each do |staff_subject| %>
     <%=  "Assessments for #{staff_subject.subject.name} Form/Class #{staff_subject.form.name}"%> 
